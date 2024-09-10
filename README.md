@@ -16,8 +16,9 @@ This project focuses on analyzing and predicting crime in Chicago based on geogr
 7. [Sampling Techniques](#sampling-techniques)
 8. [Dimensionality Reduction: PCA](#dimensionality-reduction-pca)
 9. [Model Performance](#model-performance)
-10. [Future Work](#future-work)
-11. [References](#references)
+10. [Application – Predictions for 2024](#application--predictions-for-2024)
+11. [Future Work](#future-work)
+12. [References](#references)
 
 ## Introduction
 Crime is a persistent social issue that affects public safety and socio-economic well-being. Inspired by real-world events, this project aims to analyze crime trends in Chicago based on time and location, and predict future crime occurrences using machine learning techniques. The goal is to assist law enforcement in making informed decisions and improving public safety.
@@ -145,6 +146,29 @@ After comparing the models, the Random Forest model demonstrated the best overal
 | Random Forest  | 75.23%    | 67.31%   |
 | KNN            | 73.69%    | 65.05%   |
 
+## Application – Predictions for 2024
+
+In this section, crime predictions for various large-scale events happening in Chicago in 2024 were made using the Random Forest model, which showed the best performance. Predictions were made for different time periods of the day, with results helping local authorities take preventive measures.
+
+**Table 5**: International Events and Predicted Crime Types for 2024:
+
+| Activity Name                                      | Latitude | Longitude | Month | Day | Weekday   | Time         | Predicted UCR Part |
+|---------------------------------------------------|----------|-----------|-------|-----|-----------|--------------|-------------------|
+| Chicago Auto Show 2024                            | 41.88323 | -87.6324  | 2     | 10  | Saturday  | Early Morning | UCR Part I         |
+| Chicago Auto Show 2024                            | 41.88323 | -87.6324  | 2     | 10  | Saturday  | Late Morning  | UCR Part I         |
+| Chicago Auto Show 2024                            | 41.88323 | -87.6324  | 2     | 10  | Saturday  | Afternoon     | UCR Part I         |
+| Chicago Auto Show 2024                            | 41.88323 | -87.6324  | 2     | 10  | Saturday  | Night         | UCR Part I         |
+| Expo Chicago 2024                                 | 41.8914  | -87.5997  | 4     | 11  | Thursday  | Early Morning | UCR Part I         |
+| Expo Chicago 2024                                 | 41.8914  | -87.5997  | 4     | 11  | Thursday  | Late Morning  | UCR Part I         |
+| Expo Chicago 2024                                 | 41.8914  | -87.5997  | 4     | 11  | Thursday  | Afternoon     | UCR Part I         |
+| Expo Chicago 2024                                 | 41.8914  | -87.5997  | 4     | 11  | Thursday  | Night         | UCR Part I         |
+| 2024 Chicago International Music Competition Final | 41.8762  | -87.6254  | 7     | 17  | Wednesday | Early Morning | UCR Part I         |
+| 2024 Chicago International Music Competition Final | 41.8762  | -87.6254  | 7     | 17  | Wednesday | Late Morning  | UCR Part I         |
+| 2024 Chicago International Music Competition Final | 41.8762  | -87.6254  | 7     | 17  | Wednesday | Afternoon     | UCR Part I         |
+| 2024 Chicago International Music Competition Final | 41.8762  | -87.6254  | 7     | 17  | Wednesday | Night         | UCR Part I         |
+
+Based on the model's prediction, the events are likely to experience UCR Part I crimes, which are more serious. Authorities should focus on preventive measures during these events, especially in crowded and high-risk areas.
+
 ## Future Work
 - **Additional Features**: Incorporating demographic, economic, and weather data could improve the prediction accuracy.
 - **Deep Learning**: Applying neural networks with optimized hyperparameters could lead to better results.
@@ -153,4 +177,4 @@ After comparing the models, the Random Forest model demonstrated the best overal
 ## References
 1. Sharma, A., & Singh, D. (2021). Machine learning-based analytical approach for geographical analysis and prediction of Boston City crime using geospatial dataset. *Geojournal*. [DOI: 10.1007/s10708-021-10485-4](https://doi.org/10.1007/s10708-021-10485-4)
 2. Hossain, S., et al. (2020). Crime Prediction Using Spatio-Temporal Data. *Communications in Computer and Information Science*. [DOI: 10.1007/978-981-15-6648-6_221](https://doi.org/10.1007/978-981-15-6648-6_221)
-3. Yadav, S., et al. (2017). Crime pattern detection, analysis & prediction. *2017 International Conference of
+3. Yadav, S., et al. (2017). Crime pattern detection, analysis & prediction. *2017 International Conference of Electronics, Communication and Aerospace Technology (ICECA)*. [DOI: 10.1007/s10708-021-10485-4](https://doi.org/10.1007/s10708-021-10485-4)
