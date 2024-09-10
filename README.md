@@ -8,6 +8,7 @@ This project focuses on analyzing and predicting crime in Chicago based on geogr
 3. [Datasets](#datasets)
 4. [Data Processing](#data-processing)
 5. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+    - [Data Visualization](#data-visualization)
 6. [Machine Learning Models](#machine-learning-models)
     - [Decision Tree](#decision-tree)
     - [Random Forest](#random-forest)
@@ -15,9 +16,8 @@ This project focuses on analyzing and predicting crime in Chicago based on geogr
 7. [Sampling Techniques](#sampling-techniques)
 8. [Dimensionality Reduction: PCA](#dimensionality-reduction-pca)
 9. [Model Performance](#model-performance)
-10. [Visualization](#visualization)
-11. [Future Work](#future-work)
-12. [References](#references)
+10. [Future Work](#future-work)
+11. [References](#references)
 
 ## Introduction
 Crime is a persistent social issue that affects public safety and socio-economic well-being. Inspired by real-world events, this project aims to analyze crime trends in Chicago based on time and location, and predict future crime occurrences using machine learning techniques. The goal is to assist law enforcement in making informed decisions and improving public safety.
@@ -40,58 +40,117 @@ The project uses crime data from Chicago, spanning from 2001 to 2024. This datas
 2. **Feature Selection**: Relevant features like crime type, location (latitude and longitude), and time were retained for modeling.
 3. **Crime Classification**: Crimes were reclassified into two categories (UCR Part I and Part II) using the IUCR codes.
 
+**Table 1**: Overview of the dataset after preprocessing:
+
+| Block          | Primary Type | District | Ward | Community Area | Year | Latitude | Longitude | UCR Part | Month | Day | Time | Weekday |
+|----------------|--------------|----------|------|----------------|------|----------|-----------|----------|-------|-----|------|---------|
+| XXX BLOCK A    | Theft        | 12       | 24   | Area 1         | 2020 | 41.8781  | -87.6298  | Part I   | 7     | 14  | Afternoon | Wednesday |
+| XXX BLOCK B    | Assault      | 5        | 12   | Area 5         | 2022 | 41.8781  | -87.6298  | Part II  | 9     | 8   | Late Morning | Monday |
+| ...            | ...          | ...      | ...  | ...            | ...  | ...      | ...       | ...      | ...   | ... | ...  | ...     |
+
 ## Exploratory Data Analysis (EDA)
-Data visualizations were performed to understand crime trends. Key insights include:
-- UCR Part I crimes (violent crimes) are more frequent than UCR Part II crimes (less serious crimes).
-- Crime peaks during the afternoon and in summer months (July and August).
-  
-**Tools**: `ggplot2` in R, and [kepler.gl](http://www.kepler.gl/) for spatial visualizations.
+
+The Exploratory Data Analysis was performed using Python for data manipulation and `ggplot2` in R for visualization. The data was analyzed to identify patterns in crime types, their distribution across time and location.
+
+### Data Visualization
+Several visualizations were generated to better understand crime trends:
+
+- **Trend Over Time**: Crimes in UCR Part I are significantly higher than in Part II across the years. There is a noticeable dip in 2020 and 2021, potentially due to the pandemic.
+
+![Crime Trends](path/to/image)
+
+- **Crimes by Month**: UCR Part I crimes peak in July and August, making them the most unsafe months.
+
+![Crimes by Month](path/to/image)
+
+- **Crimes by Time of Day**: UCR Part I crimes are most frequent in the afternoon, while UCR Part II crimes peak in the late morning.
+
+![Crimes by Time](path/to/image)
+
+- **Crime Types**: Theft is the most common crime in UCR Part I, while deceptive practices dominate UCR Part II.
+
+![Crime Types](path/to/image)
+
+- **Geospatial Visualization**: Crimes are distributed throughout Chicago, with the northwest side of District 16 showing fewer incidents.
+
+![Crime Map](path/to/image)
 
 ## Machine Learning Models
 
 ### Decision Tree
-A decision tree was trained on selected features (e.g., time, location). The model achieved:
+A decision tree model was trained on selected features (e.g., time, location). The model’s performance is summarized below.
+
+**Model Results**:
 - **Accuracy**: 64.57%
 - **F1-Score**: 64.89%
-  
+
+![Decision Tree](path/to/image)
+
 ### Random Forest
-Random Forest outperformed the decision tree after hyperparameter tuning:
+Random Forest, with optimized hyperparameters, outperformed the decision tree model.
+
+**Optimal Hyperparameters**:
+- `n_estimators`: 181
+- `max_depth`: 19
+- `min_samples_split`: 14
+- `min_samples_leaf`: 4
+- `max_features`: 7
+- `criterion`: gini
+
+**Model Results**:
 - **Accuracy**: 75.23%
 - **F1-Score**: 67.31%
-  
+
+![Random Forest ROC](path/to/image)
+
 ### K-Nearest Neighbor (KNN)
-KNN was also explored, achieving:
+KNN was also explored and optimized using the Elbow Method.
+
+**Model Results**:
 - **Accuracy**: 73.69%
 - **F1-Score**: 65.05%
 
+![KNN ROC](path/to/image)
+
 ## Sampling Techniques
-To handle class imbalance, oversampling (SMOTE) and undersampling techniques were employed. However, these techniques did not lead to significant improvements in model performance.
+To handle the imbalanced dataset, oversampling and undersampling techniques were applied. However, neither technique significantly improved model performance.
+
+**Table 2**: Results of Different Sampling Techniques:
+
+| Sampling Method | Accuracy   | F1-Score  |
+|-----------------|------------|-----------|
+| No Sampling     | 73.38%     | 68.12%    |
+| Random Undersampling | 60.55% | 62.92%    |
+| SMOTE Oversampling | 64.84%  | 66.36%    |
+| Random Oversampling | 62.62%  | 64.52%    |
 
 ## Dimensionality Reduction: PCA
-Principal Component Analysis (PCA) was applied for dimensionality reduction. Models trained on PCA-reduced data did not outperform models without PCA.
+Principal Component Analysis (PCA) was used to reduce data dimensionality. However, the models trained on PCA-reduced data did not show improvement over the models trained without PCA.
+
+**Table 3**: Model Performance With and Without PCA:
+
+| Model              | Accuracy Without PCA | Accuracy With PCA | F1-Score Without PCA | F1-Score With PCA |
+|--------------------|----------------------|-------------------|----------------------|-------------------|
+| Decision Tree      | 64.57%               | 64.04%            | 64.89%               | 63.91%            |
+| Random Forest      | 73.38%               | 67.02%            | 68.12%               | 65.51%            |
 
 ## Model Performance
+After comparing the models, the Random Forest model demonstrated the best overall performance.
+
+**Table 4**: Model Performance Summary:
+
 | Model          | Accuracy  | F1-Score |
 |----------------|-----------|----------|
 | Decision Tree  | 64.57%    | 64.89%   |
 | Random Forest  | 75.23%    | 67.31%   |
 | KNN            | 73.69%    | 65.05%   |
 
-The Random Forest model with tuned hyperparameters provided the best performance in terms of both accuracy and F1-score.
-
-## Visualization
-Multiple visualizations were created to better understand the data:
-1. Crime trends over time.
-2. Crime distribution by type.
-3. Geospatial maps of crime occurrences using latitude and longitude.
-
 ## Future Work
-- Incorporating additional features such as economic indicators, demographic statistics, and weather data.
-- Applying deep learning techniques to improve prediction accuracy.
-- Expanding the dataset and including more complex features to address the limitations in current predictive models.
+- **Additional Features**: Incorporating demographic, economic, and weather data could improve the prediction accuracy.
+- **Deep Learning**: Applying neural networks with optimized hyperparameters could lead to better results.
+- **Dataset Expansion**: Expanding the dataset with more features would provide more context for predictions.
 
 ## References
 1. Sharma, A., & Singh, D. (2021). Machine learning-based analytical approach for geographical analysis and prediction of Boston City crime using geospatial dataset. *Geojournal*. [DOI: 10.1007/s10708-021-10485-4](https://doi.org/10.1007/s10708-021-10485-4)
 2. Hossain, S., et al. (2020). Crime Prediction Using Spatio-Temporal Data. *Communications in Computer and Information Science*. [DOI: 10.1007/978-981-15-6648-6_221](https://doi.org/10.1007/978-981-15-6648-6_221)
-3. Yadav, S., et al. (2017). Crime pattern detection, analysis & prediction. *2017 International Conference of Electronics, Communication and Aerospace Technology (ICECA)*. [DOI: 10.1007/s10708-021-10485-4](https://doi.org/10.1007/s10708-021-10485-4)
-
+3. Yadav, S., et al. (2017). Crime pattern detection, analysis & prediction. *2017 International Conference of
