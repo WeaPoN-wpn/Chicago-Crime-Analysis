@@ -58,7 +58,7 @@ Several visualizations were generated to better understand crime trends:
 
 - **Trend Over Time**: Crimes in UCR Part I are significantly higher than in Part II across the years. There is a noticeable dip in 2020 and 2021, potentially due to the pandemic.
 
-![Crime Trends](path/to/image)
+![Crime Trends](./Rplots/Rplot03)
 
 - **Crimes by Month**: UCR Part I crimes peak in July and August, making them the most unsafe months.
 
