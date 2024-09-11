@@ -56,25 +56,25 @@ The Exploratory Data Analysis was performed using Python for data manipulation a
 ### Data Visualization
 Several visualizations were generated to better understand crime trends:
 
-- **Trend Over Time**: Crimes in UCR Part I are significantly higher than in Part II across the years. There is a noticeable dip in 2020 and 2021, potentially due to the pandemic.
+- **Crimes by Year**: Crimes in UCR Part I are significantly higher than in Part II across the years. There is a noticeable dip in 2020 and 2021, potentially due to the pandemic.
 
 ![Crime Trends](Rplots/Rplot03.png)
 
 - **Crimes by Month**: UCR Part I crimes peak in July and August, making them the most unsafe months.
 
-![Crimes by Month](path/to/image)
+![Crimes by Month](Rplots/Rplot04.png)
 
 - **Crimes by Time of Day**: UCR Part I crimes are most frequent in the afternoon, while UCR Part II crimes peak in the late morning.
 
-![Crimes by Time](path/to/image)
+![Crimes by Time](Rplots/Rplot05.png)
 
 - **Crime Types**: Theft is the most common crime in UCR Part I, while deceptive practices dominate UCR Part II.
 
-![Crime Types](path/to/image)
+![Crime Types](Rplots/Rplot02.png)
 
 - **Geospatial Visualization**: Crimes are distributed throughout Chicago, with the northwest side of District 16 showing fewer incidents.
 
-![Crime Map](path/to/image)
+![Crime Map](./fig1.png)
 
 ## Machine Learning Models
 
