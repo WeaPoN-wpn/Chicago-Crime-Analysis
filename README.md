@@ -7,19 +7,19 @@ This project focuses on analyzing and predicting crime in Chicago based on geogr
 2. [Project Structure](#project-structure)
 3. [Datasets](#datasets)
 4. [Data Processing](#data-processing)
-5. [Feature Selection](#feature-selection)  <!-- Added Feature Selection -->
-6. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+5. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
     - [Data Visualization](#data-visualization)
-7. [Machine Learning Models](#machine-learning-models)
+6. [Machine Learning Models](#machine-learning-models)
+    - [Feature Selection](#feature-selection)
     - [Decision Tree](#decision-tree)
     - [Random Forest](#random-forest)
     - [K-Nearest Neighbor](#k-nearest-neighbor)
-8. [Sampling Techniques](#sampling-techniques)
-9. [Dimensionality Reduction: PCA](#dimensionality-reduction-pca)
-10. [Model Performance](#model-performance)
-11. [Application – Predictions for 2024](#application--predictions-for-2024)
-12. [Future Work](#future-work)
-13. [References](#references)
+7. [Sampling Techniques](#sampling-techniques)
+8. [Dimensionality Reduction: PCA](#dimensionality-reduction-pca)
+9. [Model Performance](#model-performance)
+10. [Application – Predictions for 2024](#application--predictions-for-2024)
+11. [Future Work](#future-work)
+12. [References](#references)
 
 ## Introduction
 Crime is a persistent social issue that affects public safety and socio-economic well-being. Inspired by real-world events, this project aims to analyze crime trends in Chicago based on time and location, and predict future crime occurrences using machine learning techniques. The goal is to assist law enforcement in making informed decisions and improving public safety.
@@ -42,33 +42,13 @@ The project uses crime data from Chicago, spanning from 2001 to 2024. This datas
 2. **Feature Selection**: Relevant features like crime type, location (latitude and longitude), and time were retained for modeling.
 3. **Crime Classification**: Crimes were reclassified into two categories (UCR Part I and Part II) using the IUCR codes.
 
-## Feature Selection
-During the data processing phase, feature selection was critical for refining the model inputs. We selected the most relevant features for predicting crime occurrences. These included:
-- **Primary Type**: The type of crime (e.g., theft, assault).
-- **Location Description**: Where the crime took place.
-- **Year, Month, and Time**: Temporal factors that often correlate with crime occurrences.
-- **Geographical Coordinates (Latitude and Longitude)**: To analyze crime distribution across Chicago.
-- **District, Ward, and Community Area**: To account for the administrative areas in which the crimes occurred.
+**Table 1**: Overview of the dataset after preprocessing:
 
-To ensure we only used the most valuable information, we conducted a correlation analysis to assess feature importance. The following image shows the correlation matrix for the selected features:
-
-![Correlation Matrix](Rplots/CorrelationMatrix.png)
-
-Below is a table summarizing the importance of the features based on the Random Forest model:
-
-**Table 1: Feature Importance Ranking**
-| Feature               | Importance Score |
-|-----------------------|------------------|
-| Primary Type          | 0.28             |
-| Longitude             | 0.22             |
-| Latitude              | 0.19             |
-| Year                  | 0.10             |
-| District              | 0.07             |
-| Month                 | 0.06             |
-| Time                  | 0.05             |
-| Ward                  | 0.03             |
-
-These selected features were used to train our models and improve predictive accuracy.
+| Block          | Primary Type | District | Ward | Community Area | Year | Latitude | Longitude | UCR Part | Month | Day | Time | Weekday |
+|----------------|--------------|----------|------|----------------|------|----------|-----------|----------|-------|-----|------|---------|
+| XXX BLOCK A    | Theft        | 12       | 24   | Area 1         | 2020 | 41.8781  | -87.6298  | Part I   | 7     | 14  | Afternoon | Wednesday |
+| XXX BLOCK B    | Assault      | 5        | 12   | Area 5         | 2022 | 41.8781  | -87.6298  | Part II  | 9     | 8   | Late Morning | Monday |
+| ...            | ...          | ...      | ...  | ...            | ...  | ...      | ...       | ...      | ...   | ... | ...  | ...     |
 
 ## Exploratory Data Analysis (EDA)
 
@@ -98,6 +78,20 @@ Several visualizations were generated to better understand crime trends:
 ![Crime Map](./fig1.png)
 
 ## Machine Learning Models
+
+### Feature Selection
+To extract the information from the dataset, I first calculated the importance of the features using the “ExtraTreesClassifier” (Fig. 6). We can see that the features "District" and "Community Area" are much less important than the other features. Considering that there is more than one area division criterion and spatial features in the data (e.g., District, Community Area, Latitude, and Longitude), I extracted these features and fitted decision trees on them to assess their significance. The results (Table 2) show that while the accuracy of the separate models based on “District” and “Community Area” is reasonably decent, their F1-scores are not as high as the models based on Latitude and Longitude. Since "District" and "Community Area" are defined by different latitude and longitude, including them all in the model would lead to multicollinearity. After considering this, I decided to choose the final features as “Latitude,” “Longitude,” “Year,” “Month,” “Day,” “Weekday,” and “Time.”
+
+**Fig. 6**: Importance of the features
+
+**Table 2**: Importance of the features in tree-based models  
+
+| Features | Time Data Based (Decision Tree) | Spatial Data Based (Decision Tree) |  
+|----------------|----------|---------|  
+| Year, Month, Weekday, Day, Time | 72.85% (Accuracy) | 68.88% (F1-Score) |  
+| District | 74.06% (Accuracy) | 63.03% (F1-Score) |  
+| Community Area | 74.06% (Accuracy) | 63.02% (F1-Score) |  
+| Latitude, Longitude | 72.85% (Accuracy) | 68.88% (F1-Score) |  
 
 ### Decision Tree
 A decision tree model was trained on selected features (e.g., time, location). The model’s performance is summarized below.
@@ -135,7 +129,7 @@ KNN was also explored and optimized using the Elbow Method.
 ## Sampling Techniques
 To handle the imbalanced dataset, oversampling and undersampling techniques were applied. However, neither technique significantly improved model performance.
 
-**Table 2**: Results of Different Sampling Techniques:
+**Table 3**: Results of Different Sampling Techniques:
 
 | Sampling Method | Accuracy   | F1-Score  |
 |-----------------|------------|-----------|
@@ -147,7 +141,7 @@ To handle the imbalanced dataset, oversampling and undersampling techniques were
 ## Dimensionality Reduction: PCA
 Principal Component Analysis (PCA) was used to reduce data dimensionality. However, the models trained on PCA-reduced data did not show improvement over the models trained without PCA.
 
-**Table 3**: Model Performance With and Without PCA:
+**Table 4**: Model Performance With and Without PCA:
 
 | Model              | Accuracy Without PCA | Accuracy With PCA | F1-Score Without PCA | F1-Score With PCA |
 |--------------------|----------------------|-------------------|----------------------|-------------------|
@@ -159,7 +153,7 @@ After comparing the models, the Random Forest model demonstrated the best overal
 
 ![ROC curves of different models](./ROC_comparison.jpg)
 
-**Table 4**: Model Performance Summary:
+**Table 5**: Model Performance Summary:
 
 | Model          | Accuracy  | F1-Score |
 |----------------|-----------|----------|
@@ -171,7 +165,7 @@ After comparing the models, the Random Forest model demonstrated the best overal
 
 In this section, crime predictions for various large-scale events happening in Chicago in 2024 were made using the Random Forest model, which showed the best performance. Predictions were made for different time periods of the day, with results helping local authorities take preventive measures.
 
-**Table 5**: International Events and Predicted Crime Types for 2024:
+**Table 6**: International Events and Predicted Crime Types for 2024:
 
 | Activity Name                                      | Latitude | Longitude | Month | Day | Weekday   | Time         | Predicted UCR Part |
 |---------------------------------------------------|----------|-----------|-------|-----|-----------|--------------|-------------------|
@@ -187,6 +181,8 @@ In this section, crime predictions for various large-scale events happening in C
 | 2024 Chicago International Music Competition Final | 41.8762  | -87.6254  | 7     | 17  | Wednesday | Late Morning  | UCR Part I         |
 | 2024 Chicago International Music Competition Final | 41.8762  | -87.6254  | 7     | 17  | Wednesday | Afternoon     | UCR Part I         |
 | 2024 Chicago International Music Competition Final | 41.8762  | -87.6254  | 7     | 17  | Wednesday | Night         | UCR Part I         |
+
+Based on the model's prediction, the events are likely to experience UCR Part I crimes, which are more serious. Authorities should focus on preventive measures during these events, especially in crowded and high-risk areas.
 
 ## Future Work
 - **Additional Features**: Incorporating demographic, economic, and weather data could improve the prediction accuracy.
