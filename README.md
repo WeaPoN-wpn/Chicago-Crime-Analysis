@@ -138,6 +138,8 @@ Principal Component Analysis (PCA) was used to reduce data dimensionality. Howev
 ## Model Performance
 After comparing the models, the Random Forest model demonstrated the best overall performance.
 
+![ROC curves of different models](./ROC_comparison.jpg)
+
 **Table 4**: Model Performance Summary:
 
 | Model          | Accuracy  | F1-Score |
