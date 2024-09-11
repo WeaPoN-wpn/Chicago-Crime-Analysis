@@ -85,7 +85,7 @@ A decision tree model was trained on selected features (e.g., time, location). T
 - **Accuracy**: 64.57%
 - **F1-Score**: 64.89%
 
-![Decision Tree](path/to/image)
+![Decision Tree](./DecisionTree.jpg)
 
 ### Random Forest
 Random Forest, with optimized hyperparameters, outperformed the decision tree model.
@@ -102,7 +102,6 @@ Random Forest, with optimized hyperparameters, outperformed the decision tree mo
 - **Accuracy**: 75.23%
 - **F1-Score**: 67.31%
 
-![Random Forest ROC](path/to/image)
 
 ### K-Nearest Neighbor (KNN)
 KNN was also explored and optimized using the Elbow Method.
@@ -111,7 +110,6 @@ KNN was also explored and optimized using the Elbow Method.
 - **Accuracy**: 73.69%
 - **F1-Score**: 65.05%
 
-![KNN ROC](path/to/image)
 
 ## Sampling Techniques
 To handle the imbalanced dataset, oversampling and undersampling techniques were applied. However, neither technique significantly improved model performance.
