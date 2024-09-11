@@ -145,6 +145,10 @@ To handle the imbalanced dataset, oversampling and undersampling techniques were
 ## Dimensionality Reduction: PCA
 Principal Component Analysis (PCA) was used to reduce data dimensionality. However, the models trained on PCA-reduced data did not show improvement over the models trained without PCA.
 
+- **Scatter plot of principal component 1 vs. principal component 2:**
+
+![PCA](./PCA.jpg)
+
 **Table 4**: Model Performance With and Without PCA:
 
 | Model              | Accuracy Without PCA | Accuracy With PCA | F1-Score Without PCA | F1-Score With PCA |
