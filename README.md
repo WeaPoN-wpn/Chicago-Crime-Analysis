@@ -96,7 +96,7 @@ To extract the information from the dataset, I first calculated the importance o
 | Latitude, Longitude | 72.85% (Accuracy) | 68.88% (F1-Score) |  
 
 ### Decision Tree
-A decision tree model was trained on selected features (e.g., time, location). The model’s performance is summarized below.
+A decision tree model was trained on selected features (e.g., time, location). The first 4 layers of this model are shown below.
 
 ![Decision Tree](./DecisionTree.jpg)
 
