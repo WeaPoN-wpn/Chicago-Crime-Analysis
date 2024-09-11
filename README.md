@@ -107,6 +107,8 @@ A decision tree model was trained on selected features (e.g., time, location). T
 ### Random Forest
 Random Forest, with optimized hyperparameters, outperformed the decision tree model.
 
+![Learning Curves of RF](./RF_LC.jpg)
+
 **Optimal Hyperparameters**:
 - n_estimators: 181
 - max_depth: 19
