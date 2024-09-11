@@ -106,6 +106,8 @@ Random Forest, with optimized hyperparameters, outperformed the decision tree mo
 ### K-Nearest Neighbor (KNN)
 KNN was also explored and optimized using the Elbow Method.
 
+![Elbow Method](./ElbowMethod.jpg)
+
 **Model Results**:
 - **Accuracy**: 73.69%
 - **F1-Score**: 65.05%
