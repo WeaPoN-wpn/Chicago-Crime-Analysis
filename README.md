@@ -82,7 +82,7 @@ Several visualizations were generated to better understand crime trends:
 ### Feature Selection
 To extract the information from the dataset, I first calculated the importance of the features using the “ExtraTreesClassifier”. We can see that the features "District" and "Community Area" are much less important than the other features. Considering that there is more than one area division criterion and spatial features in the data (e.g., District, Community Area, Latitude, and Longitude), I extracted these features and fitted decision trees on them to assess their significance. The results (Table 2) show that while the accuracy of the separate models based on “District” and “Community Area” is reasonably decent, their F1-scores are not as high as the models based on Latitude and Longitude. Since "District" and "Community Area" are defined by different latitude and longitude, including them all in the model would lead to multicollinearity. After considering this, I decided to choose the final features as “Latitude,” “Longitude,” “Year,” “Month,” “Day,” “Weekday,” and “Time.”
 
-**Importance of Features in “ExtraTreesClassifier”**:
+**Importance of Features in “ExtraTreesClassifier”:**
 
 ![Importance of Features](./FeatureImportance.jpg)
 
@@ -98,11 +98,11 @@ To extract the information from the dataset, I first calculated the importance o
 ### Decision Tree
 A decision tree model was trained on selected features (e.g., time, location). The model’s performance is summarized below.
 
+![Decision Tree](./DecisionTree.jpg)
+
 **Model Results**:
 - **Accuracy**: 64.57%
 - **F1-Score**: 64.89%
-
-![Decision Tree](./DecisionTree.jpg)
 
 ### Random Forest
 Random Forest, with optimized hyperparameters, outperformed the decision tree model.
