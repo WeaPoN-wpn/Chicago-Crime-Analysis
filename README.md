@@ -75,7 +75,7 @@ Several visualizations were generated to better understand crime trends:
 
 - **Geospatial Visualization**: Crimes are distributed throughout Chicago, with the northwest side of District 16 showing fewer incidents.
 
-![Crime Map](./fig1.png)
+![Crime Map](Figs/fig1.png)
 
 ## Machine Learning Models
 
@@ -84,7 +84,7 @@ To extract the information from the dataset, I first calculated the importance o
 
 - **Importance of the features in “ExtraTreesClassifier”:**
 
-![Importance of Features](./FeatureImportance.jpg)
+![Importance of Features](Figs/FeatureImportance.jpg)
 
 **Table 2**: Importance of the features in tree-based models  
 
@@ -98,7 +98,7 @@ To extract the information from the dataset, I first calculated the importance o
 ### Decision Tree
 A decision tree model was trained on selected features (e.g., time, location). The first 4 layers of this model are shown below.
 
-![Decision Tree](./DecisionTree.jpg)
+![Decision Tree](Figs/DecisionTree.jpg)
 
 **Model Results**:
 - **Accuracy**: 64.57%
@@ -107,7 +107,7 @@ A decision tree model was trained on selected features (e.g., time, location). T
 ### Random Forest
 Random Forest, with optimized hyperparameters, outperformed the decision tree model.
 
-![Learning Curves of RF](./RF_LC.jpg)
+![Learning Curves of RF](Figs/RF_LC.jpg)
 
 **Optimal Hyperparameters**:
 - n_estimators: 181
@@ -124,7 +124,7 @@ Random Forest, with optimized hyperparameters, outperformed the decision tree mo
 ### K-Nearest Neighbor (KNN)
 KNN was also explored and optimized using the Elbow Method.
 
-![Elbow Method](./ElbowMethod.jpg)
+![Elbow Method](Figs/ElbowMethod.jpg)
 
 **Model Results**:
 - **Accuracy**: 73.69%
@@ -147,7 +147,7 @@ Principal Component Analysis (PCA) was used to reduce data dimensionality. Howev
 
 - **Scatter plot of principal component 1 vs. principal component 2:**
 
-![PCA](./PCA.jpg)
+![PCA](Figs/PCA.jpg)
 
 **Table 4**: Model Performance With and Without PCA:
 
@@ -161,7 +161,7 @@ After comparing the models, the Random Forest model demonstrated the best overal
 
 - **ROC curves of different models:**
 
-![ROC curves of different models](./ROC_comparison.jpg)
+![ROC curves of different models](Figs/ROC_comparison.jpg)
 
 **Table 5**: Model Performance Summary:
 
