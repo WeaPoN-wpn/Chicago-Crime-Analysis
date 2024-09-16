@@ -1,6 +1,6 @@
 # Geographical Analysis and Prediction of Chicago Crime
 
-This project focuses on analyzing and predicting crime in Chicago based on geographical and temporal data. By leveraging machine learning techniques such as decision trees, random forests, and K-Nearest Neighbors (KNN), the project aims to enhance public safety by predicting crime occurrences based on time, location, and other factors.
+This project focuses on analyzing and predicting crime in Chicago based on geographical and temporal data. By leveraging machine learning techniques such as decision trees, random forests, and K-Nearest Neighbors (KNN), the project aims to enhance public safety by predicting crime occurrences based on time, location, and other factors. For a more detailed analysis and discussion, please refer to the [full project report](Full_Report.pdf).
 
 ## Table of Contents
 1. [Introduction](#introduction)
